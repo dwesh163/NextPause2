@@ -24,14 +24,21 @@ function AppRoutes() {
 	const firstSchool = schools[0];
 
 	useEffect(() => {
-		if (!schools.includes(location.pathname)) {
-			if (selectedSchool && schools.includes(`/${selectedSchool}`)) {
-				navigate(`/${selectedSchool}`);
-				localStorage.setItem('selectedSchool', selectedSchool.replace('/', ''));
-			} else if (location.pathname === '/' && firstSchool) {
-				navigate(firstSchool);
-				localStorage.setItem('selectedSchool', firstSchool.replace('/', ''));
-			}
+		console.log('selectedSchool', selectedSchool);
+		console.log('location.pathname', location.pathname);
+		console.log('schools', schools);
+
+		if (location.pathname === '/' && firstSchool) {
+			localStorage.setItem('selectedSchool', firstSchool.replace('/', ''));
+			navigate(firstSchool);
+		}
+
+		console.log('oui');
+
+		if (schools.includes(location.pathname)) {
+			console.log('oui2');
+			localStorage.setItem('selectedSchool', location.pathname.replace('/', ''));
+			navigate(location.pathname);
 		}
 	}, [selectedSchool, navigate, location.pathname, firstSchool]);
 
