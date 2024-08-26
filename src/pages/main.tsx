@@ -56,7 +56,7 @@ export default function Main() {
 	const calculateTimeRemaining = (eventDate: Date) => {
 		const now = new Date();
 		const difference = eventDate.getTime() - now.getTime();
-		if (difference <= 0) return 'Event has passed';
+		if (difference <= 0) return '';
 
 		const hours = Math.floor(difference / (1000 * 60 * 60));
 		const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
@@ -67,12 +67,8 @@ export default function Main() {
 
 	return (
 		<div>
-			{text !== 'No more events today' && (
-				<div>
-					<h2>{text ? text : 'Prochaine sonnerie dans : '}</h2>
-					<h3>{calculateTimeRemaining(timeUntilNextEvent)}</h3>
-				</div>
-			)}
+			<h2>{text ? text : 'Prochaine sonnerie dans : '}</h2>
+			<h3>{calculateTimeRemaining(timeUntilNextEvent)}</h3>
 		</div>
 	);
 }
