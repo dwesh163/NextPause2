@@ -7,6 +7,8 @@ export default function Layout() {
 	const navigate = useNavigate();
 	const [selectedSchool, setSelectedSchool] = useState<string | null>(localStorage.getItem('selectedSchool'));
 
+	console.log(selectedSchool);
+
 	useEffect(() => {
 		if (selectedSchool !== null) {
 			localStorage.setItem('selectedSchool', selectedSchool);
@@ -14,6 +16,12 @@ export default function Layout() {
 			navigate(`/${selectedSchool}`);
 		}
 	}, [selectedSchool, navigate]);
+
+	useEffect(() => {
+		if (localStorage.getItem('selectedSchool') !== null) {
+			setSelectedSchool(localStorage.getItem('selectedSchool'));
+		}
+	}, [localStorage.getItem('selectedSchool')]);
 
 	return (
 		<main>
