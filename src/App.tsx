@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import ReactDOM from 'react-dom/client';
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import timeData from './assets/time.json';
 import Layout from './pages/layout';
