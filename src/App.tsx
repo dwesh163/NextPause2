@@ -27,8 +27,10 @@ function AppRoutes() {
 		if (!schools.includes(location.pathname)) {
 			if (selectedSchool && schools.includes(`/${selectedSchool}`)) {
 				navigate(`/${selectedSchool}`);
+				localStorage.setItem('selectedSchool', selectedSchool.replace('/', ''));
 			} else if (location.pathname === '/' && firstSchool) {
 				navigate(firstSchool);
+				localStorage.setItem('selectedSchool', firstSchool.replace('/', ''));
 			}
 		}
 	}, [selectedSchool, navigate, location.pathname, firstSchool]);
